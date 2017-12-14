@@ -30,3 +30,38 @@ and returns the distance required.
 The Jaccard distance is calculated as the intersection of two sets divided by their union.
 
 
+
+---------------------------------------------------------
+----------------    PART 2    --------------------------
+---------------------------------------------------------
+
+Given a conference in input, we need to return the subgraph induced by the set of authors who published at the input 
+conference at least once. A vertex-induced subgraph is a subset of the vertices of a graph G together with any edges 
+whose endpoints are both in this subset. To construct this subgraph we took information from the conference dictionary 
+mentioned above, considering just the authors which participated to a certain conference with a publication and adding them as nodes.
+
+Once obtained the subgraph we can calculate some centrality measures, which give us relative measures of importance in the network. 
+We can consider different measures since each of them measures a different type of 'importance'.
+The degree centrality corresponds to the number or in our case to the fraction of connections,  
+that a node has in the network. 
+The closeness
+The betweeness
+
+
+###   Module 'Centrality_measures_plots'   ###
+
+This module contains functions concerning the centrality measures and some pretty plots to show the results of these measures.
+
+The function 'most_important' takes in input a graph and a centrality measure and return a graph with as nodes the 10% of 
+nodes which are considered the most important given a certain centrality measure.
+The output graph is obtained creating a copy of the original graph and removing the nodes that are not in the top positions 
+of the sorted values returned by the centrality measure.
+
+The function 'draw_1' provides a way to show the results of a centrality measure. It takes in input a graph, a graph with the 
+most important nodes accordingly to the measure used and the name of that measure.
+We obtain a plot where we have the structure of the entire graph with the most important nodes highlighted.
+
+The function 'draw_2' provides a different way to show the results of a centrality measure. It takes in input a graph, the 
+centrality measure and its name and return a graph where the nodes are colored with respect to their importance. The color 
+scale starts from a clear color, which means more importance and ends with a dark color, which means less importance. 
+
