@@ -19,7 +19,8 @@ The edges between the nodes are weighted in the following way: w(a1, a2) = 1 −
 where a1, a2 are authors, p1 and p2 are the set of publications of the two authors and, J(p1, p2) represents 
 the jaccard similarity between these two sets of publications.
 To calculate the weight we implemented a function that find the jaccard similarity.
-After obtaining all the necessary information, we constructed the graph with the nodes and the weighted edges. 
+After obtaining all the necessary information, we constructed the graph adding the authors as nodes and connecting 
+them with weighted edges. 
 
 
 ###   Module 'Jaccard'  ###
@@ -28,7 +29,6 @@ The function 'jaccard' calculates the Jaccard distance between two sets of publi
 It takes in input the ids of two authors and a dictionary containing the information about the authors 
 and returns the distance required. 
 The Jaccard distance is calculated as the intersection of two sets divided by their union.
-
 
 
 ---------------------------------------------------------
@@ -42,10 +42,11 @@ mentioned above, considering just the authors which participated to a certain co
 
 Once obtained the subgraph we can calculate some centrality measures, which give us relative measures of importance in the network. 
 We can consider different measures since each of them measures a different type of 'importance'.
-The degree centrality corresponds to the number or in our case to the fraction of connections,  
-that a node has in the network. 
-The closeness
-The betweeness
+The degree centrality corresponds to the number or in our case to the fraction of connections, that a node has in the network. 
+The closeness centrality of a node is the reciprocal of the sum of the shortest path distances from that node to all n-1 other 
+nodes and since the sum depends on the number of nodes in the graph, the closeness is normalized by the sum of minimum possible 
+distances n-1. Remark that our graph is disconnected but the algorithm we used computes the measure for each connected part separately.
+The betweeness centrality of a node is the sum of the fraction of all-pairs shortest paths that pass through that node.
 
 
 ###   Module 'Centrality_measures_plots'   ###
