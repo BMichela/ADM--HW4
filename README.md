@@ -23,14 +23,6 @@ After obtaining all the necessary information, we constructed the graph adding t
 them with weighted edges. 
 
 
-###   Module 'Jaccard'  ###
-
-The function 'jaccard' calculates the Jaccard distance between two sets of publications of two authors.
-It takes in input the ids of two authors and a dictionary containing the information about the authors 
-and returns the distance required. 
-The Jaccard distance is calculated as the intersection of two sets divided by their union.
-
-
 ---------------------------------------------------------
 ----------------    PART 2    --------------------------
 ---------------------------------------------------------
@@ -47,6 +39,39 @@ The closeness centrality of a node is the reciprocal of the sum of the shortest 
 nodes and since the sum depends on the number of nodes in the graph, the closeness is normalized by the sum of minimum possible 
 distances n-1. Remark that our graph is disconnected but the algorithm we used computes the measure for each connected part separately.
 The betweeness centrality of a node is the sum of the fraction of all-pairs shortest paths that pass through that node.
+
+On the second point of this part we need to create a subgraph induced by the nodes that have hop distance at most equal to a certain given 
+distance from a particular author. Hop distance corresponds to the number of edges from one node to another. 
+For doing this we implemented a breadth-first search algorithm for traversing the graph, which explores first the neighbor nodes 
+and after pass to the next level of neighbours. 
+
+
+---------------------------------------------------------
+----------------    PART 3    --------------------------
+---------------------------------------------------------
+
+
+
+
+---------------------------------------------------------
+----------------    MODULES   --------------------------
+---------------------------------------------------------
+
+###   Module 'Distances'  ###
+
+This module contains functions concerning distances.
+
+The function 'jaccard' calculates the Jaccard distance between two sets of publications of two authors.
+It takes in input the ids of two authors and a dictionary containing the information about the authors 
+and returns the distance required. 
+The Jaccard distance is calculated as the intersection of two sets divided by their union.
+
+The function 'bfs' is an implementation of the algorithm bfs, that consider the nodes until a certain level from 
+a given starting node. The parameters in input corresponds to a graph, the id of the starting node and the hop distance which we want to consider.
+The mechanism is that it considers the neighbours of the starting node and adds them to a list, after it skips to the 
+second step where it considers the neighbours of the nodes visited at the previous one and add them to the list if they are not
+ already present and it repeats this procedure until it reaches the level of the distance given.
+The function at the end return a subgraph with the visited nodes in a certain distance and each node has an attribute with containing its level.
 
 
 ###   Module 'Centrality_measures_plots'   ###
@@ -66,3 +91,8 @@ The function 'draw_2' provides a different way to show the results of a centrali
 centrality measure and its name and return a graph where the nodes are colored with respect to their importance. The color 
 scale starts from a clear color, which means more importance and ends with a dark color, which means less importance. 
 
+The function 'draw_3' provides a plot of the hop distance with a color scale associated to node distance from a starting node. 
+It takes as imput also the the id and the name of the author (identification of the starting node) to create an appositely label on the graph.
+The dimensions of the nodes are proportionally to the number of connections they have with the other nodes.
+The function 'draw_3_bis' is just a light and faster version (for huge distances) of the previous one, where we don't consider different 
+colors for each level of nodes but simply a color for the starting node and one for all the others. 
