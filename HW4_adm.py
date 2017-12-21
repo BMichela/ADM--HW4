@@ -178,3 +178,29 @@ draw_3_bis(hopG, id, author)
 ######  PART 3  ######
 
 
+## Point 3.a
+
+# Write a Python software that takes in input an author (id) and returns the weight of the shortest path that connects
+# the input author with Aris. Here, as a measure of distance you use the weight w(a1,a2) defined previously.
+
+# Get ids of the selected nodes
+aris = 'aris anagnostopoulos'
+id_author = [(k) for k,v in authors_dict.items() if v[0] == aris]
+id_A = int(str(id_author).strip('[]'))
+
+author = input('Insert the name of the author')
+id_author = [(k) for k,v in authors_dict.items() if v[0] == author]
+id_new = int(str(id_author).strip('[]'))
+
+# Get the weight of the shortest path between Aris and the desired author
+weight_dict = Dijkstra(G,id_A)
+
+if weight_dict[id_new] != None:
+    print('The weight of the shortest path between Aris and the author ' + str(author) + ' is equal to', round(weight_dict[id_new] ,3))
+else:
+    print('The author ' + str(author) + ' has no connections with Aris.')
+
+
+## Point 3.b
+
+
