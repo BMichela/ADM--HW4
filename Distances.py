@@ -30,3 +30,17 @@ def bfs(G, id, distance):
     hopGraph = G.subgraph(visited.keys())
     nx.set_node_attributes(hopGraph, 'level', visited)
     return hopGraph
+
+
+# Weight of shortest path with Dijkstra algorithm
+def Dijkstra(graph, s):
+    A = {node: None for node in graph.nodes()} #dictionary with nodes id and shortest paths weight
+    queue = [(0, s)]  #heap of weight and starting node
+    while queue:
+        weight, v = heappop(queue)  #pop and return the smallest item from queue
+        if A[v] is None:  #if node v is unvisited add it to the dictionary
+            A[v] = weight
+            for w, edge_len in graph[v].items():
+                if A[w] is None:
+                    heappush(queue, (weight + edge_len['weight'], w)) #push values into queue
+    return A
