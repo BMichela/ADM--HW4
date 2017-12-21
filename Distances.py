@@ -1,4 +1,5 @@
 import networkx as nx
+from heapq import heappush, heappop
 
 # Calculate Jaccard distance between two sets of publications of two authors
 def jaccard(id1,id2, authors_dict):
