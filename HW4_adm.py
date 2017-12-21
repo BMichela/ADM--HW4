@@ -175,8 +175,8 @@ draw_3(hopG, id, author)
 # Faster way for big distances
 draw_3_bis(hopG, id, author)
 
-######  PART 3  ######
 
+######  PART 3  ######
 
 ## Point 3.a
 
