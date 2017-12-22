@@ -48,7 +48,6 @@ def Dijkstra(graph, s):
     return A
 
 
-
 # Groupby nodes connected to one node with edges of weight equal to 0
 def similarity_dist(G):
     Similarity_dist = {}
