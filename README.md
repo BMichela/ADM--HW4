@@ -15,10 +15,12 @@ contain the information we need:
 
 {conference_id: [id_conference_int, [authors_id, ...]]}
 
+Lookups in lists are O(n), lookups in dictionaries are amortized O(1), with regard to the number of items in the data structure.
+A dictionary is a hash table, so it is really fast to find the keys and for this reason we used the above structures.
 The edges between the nodes are weighted in the following way: w(a1, a2) = 1 − J(p1, p2)
 where a1, a2 are authors, p1 and p2 are the set of publications of the two authors and, J(p1, p2) represents 
 the jaccard similarity between these two sets of publications.
-To calculate the weight we implemented a function that find the jaccard similarity.
+To calculate the weight we implemented a function that find the Jaccard similarity.
 After obtaining all the necessary information, we constructed the graph adding the authors as nodes and connecting 
 them with weighted edges. 
 
@@ -50,7 +52,13 @@ and after pass to the next level of neighbours.
 ----------------    PART 3    --------------------------
 ---------------------------------------------------------
 
-
+The aim of this part is to obtain the weight of the shortest path that connects an author with Aris. The weight is calculated, 
+as said in part 1, with Jaccard similarity. 
+First of all we retrieved the ids of the authors we want to consider and after we used an algorithm that computed the shortest path 
+between the starting point and the arrival point. To improve and speed up this procedure, we implemented a function, based on Dijkstra's 
+algorithm, that calculates the weight of all the possible shortest paths from a given starting node (Aris) and creates a dictionary in 
+which the keys are all nodes in our graph and the values correspond to the path's weight. 
+After obtaining this structure is enough to search our destination node and get the cost of the shortest path with Aris.
 
 
 ---------------------------------------------------------
@@ -72,6 +80,18 @@ The mechanism is that it considers the neighbours of the starting node and adds 
 second step where it considers the neighbours of the nodes visited at the previous one and add them to the list if they are not
  already present and it repeats this procedure until it reaches the level of the distance given.
 The function at the end return a subgraph with the visited nodes in a certain distance and each node has an attribute with containing its level.
+
+The function 'Dijkstra' is an implementation of the Dijkstra's algorithm for finding the weight of the shortest path between nodes. It finds 
+the shortest path between one node and all the others given in input a graph and a starting node. As first thing it creates a dictionary with the 
+nodes of the graph as keys and as values it will take the weight of the shortest path. The logic behind the computation of the shortest paths is 
+based on a heap structure, which is a tree based structure where the parent node as a value greater than or equal to the one of the child node. 
+We initialize the structure with the weight 0 and the starting node and until we have nodes to visit we compute the path. After visiting each node, 
+a faster way than go through all the edges from all visited nodes, is to compute tentative distances only from the last visited node to its neighbors 
+and store them in the heap from which we can obtain the minimum distance.
+If there is no connection between the starting node and a given node, the function return as value None.
+* More about HEAP: The heap is an integral component in many algorithms — a data structure that keeps elements organised so that it is always easy 
+to find the smallest value. The heapq module defines functions for a minheap - which always returns the smallest item. To set up the heap, you add 
+values using heappush and remove them using heappop.
 
 
 ###   Module 'Centrality_measures_plots'   ###
