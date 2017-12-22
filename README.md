@@ -102,6 +102,11 @@ If there is no connection between the starting node and a given node, the functi
 to find the smallest value. The heapq module defines functions for a minheap - which always returns the smallest item. To set up the heap, you add 
 values using heappush and remove them using heappop.
 
+The function 'GroupNumber' takes in input the graph, a set of destination nodes and a dictionary with shortest paths. It simply returns the groupNumber 
+for each node of the graph, equal to the minimum of the shortest path between the node of the graph and the nodes in the given list.
+
+(The functions 'similarity_dist' and 'get_keynode' will be useful if we want to reduce the number of nodes in a graph.)
+
 
 ###   Module 'Centrality_measures_plots'   ###
 
