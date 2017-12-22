@@ -84,7 +84,7 @@ The function at the end return a subgraph with the visited nodes in a certain di
 The function 'Dijkstra' is an implementation of the Dijkstra's algorithm for finding the weight of the shortest path between nodes. It finds 
 the shortest path between one node and all the others given in input a graph and a starting node. As first thing it creates a dictionary with the 
 nodes of the graph as keys and as values it will take the weight of the shortest path. The logic behind the computation of the shortest paths is 
-based on a heap structure, which is a tree based structure where the parent node as a value greater than or equal to the one of the child node. 
+based on a heap structure, which is a tree based structure where the parent node as a value smaller than or equal to the one of the child node. 
 We initialize the structure with the weight 0 and the starting node and until we have nodes to visit we compute the path. After visiting each node, 
 a faster way than go through all the edges from all visited nodes, is to compute tentative distances only from the last visited node to its neighbors 
 and store them in the heap from which we can obtain the minimum distance.
