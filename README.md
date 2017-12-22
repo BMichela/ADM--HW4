@@ -36,7 +36,7 @@ mentioned above, considering just the authors which participated to a certain co
 
 Once obtained the subgraph we can calculate some centrality measures, which give us relative measures of importance in the network. 
 We can consider different measures since each of them measures a different type of 'importance'.
-The degree centrality corresponds to the number or in our case to the fraction of connections, that a node has in the network. 
+The degree centrality corresponds to the number of connections normalized by dividing by the maximum possible degree, which is in a simple graph n-1 (n represents the number of nodes in G).
 The closeness centrality of a node is the reciprocal of the sum of the shortest path distances from that node to all n-1 other 
 nodes and since the sum depends on the number of nodes in the graph, the closeness is normalized by the sum of minimum possible 
 distances n-1. Remark that our graph is disconnected but the algorithm we used computes the measure for each connected part separately.
