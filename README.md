@@ -60,6 +60,15 @@ algorithm, that calculates the weight of all the possible shortest paths from a 
 which the keys are all nodes in our graph and the values correspond to the path's weight. 
 After obtaining this structure is enough to search our destination node and get the cost of the shortest path with Aris.
 
+Now we have to generalize the previous point, but at the same time start to think about the optimization for our code. In fact now we 
+have as input all the nodes in the graph and as destination a list of nodes, not just one. 
+We have to calculate for each node v of the graph, its GroupNumber defined as the min{ShortestPath(v,u)}, where u are the nodes included 
+in an input set of nodes. The initial idea  was to reduce the number of nodes in the graph to decrease the number of path calculations, 
+removing for example the nodes with degree equal to 0 (disconnected nodes) or summarizing all the nodes connected with others through an 
+edge weighted 0. If we think at the problem in a different way, we can use the same logic mentioned above, computing all possible shortest path's 
+for our nodes in the input set with Dijkstra's algorithm. We collect all the paths, for a specific node, in a list of tuples and finally we compute 
+the minimum distance returning the GroupNumber.
+We also inserted some controls if the input set respects the limit of 21 nodes and if all of those nodes are in the graph.
 
 ---------------------------------------------------------
 ----------------    MODULES   --------------------------
