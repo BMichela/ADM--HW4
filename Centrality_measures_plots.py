@@ -93,3 +93,4 @@ def draw_3_bis(G, id, author):
     nx.draw_networkx_labels(G,pos,label,font_size=14,font_color='b', nodelist=[id])
     plt.title('Hop distance graph')
     plt.show()
+    
