@@ -201,7 +201,7 @@ if weight_dict[id_new] != None:
 else:
     print('The author ' + str(author) + ' has no connections with Aris.')
 
-
+    
 ## Point 3.b
 
 # Write a Python software that takes in input a subset of nodes (cardinality smaller than 21) and returns, for each
