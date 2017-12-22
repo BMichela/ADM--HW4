@@ -8,6 +8,7 @@ from pylab import show
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 from itertools import count
+import math
 from Distances import*
 from Centrality_measures_plots import*
 
@@ -203,4 +204,49 @@ else:
 
 ## Point 3.b
 
+# Write a Python software that takes in input a subset of nodes (cardinality smaller than 21) and returns, for each
+# node of the graph, its GroupNumber, defined as follow: GroupNumber(v) = min{ShortestPath(v,u)}
+# where v is a node in the graph and I is the set of input nodes.
+
+# Delete all nodes without connections
+no_connections = []
+for node in nx.nodes(G):
+    if G.degree(node)==0:
+        no_connections.append(node)
+        G.remove_node(node)
+
+# Insert a subset of nodes
+n_subset = [int(x) for x in input('Insert a subset of nodes ids (no more than 21)').split()]  # 176994 24151 9741 21462
+
+if len(n_subset) > 21:  # add a check of the dimension
+    n_subset = n_subset[0:21]
+    for i in n_subset:
+        if i not in G.nodes():
+            n_subset.remove(i)
+
+''' Attempt to speed up the calculation of the shortest paths
+
+# Get a copy of the main graph
+Gnew = G.copy()
+nx.info(Gnew)
+
+# Get nodes connected to one node with edges of weight equal to 0
+sim_dist = similarity_dist(G)
+
+# Maintain only the key node for each group of nodes
+for v in sim_dist.values():
+    for i in v:
+        Gnew.remove_node(i)
+nx.info(Gnew)
+
+# Obtain the key node, if necessary, for the destination nodes
+new_destnodes = get_keynode(n_subset, sim_dist)
+'''
+
+# Find shortest paths with Dijkstra
+#short_paths = [Dijkstra(Gnew,elem) for elem in new_destnodes]
+short_paths = [Dijkstra(G,elem) for elem in n_subset]
+
+# Get group number
+groupNumber(G, n_subset, short_paths)
 
