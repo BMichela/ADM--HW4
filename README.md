@@ -108,6 +108,7 @@ for each node of the graph, equal to the minimum of the shortest path between th
 (The functions 'similarity_dist' and 'get_keynode' will be useful if we want to reduce the number of nodes in a graph.)
 
 
+
 ###   Module 'Centrality_measures_plots'   ###
 
 This module contains functions concerning the centrality measures and some pretty plots to show the results of these measures.
