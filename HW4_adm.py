@@ -225,7 +225,6 @@ if len(n_subset) > 21:  # add a check of the dimension
             n_subset.remove(i)
 
 ''' Attempt to speed up the calculation of the shortest paths
-
 # Get a copy of the main graph
 Gnew = G.copy()
 nx.info(Gnew)
